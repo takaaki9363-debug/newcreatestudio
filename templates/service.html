@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}サービス｜newcreatestudio{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="label">SERVICE</p><h1>サービス</h1><p>目的に合わせたWeb制作・改善をご提案します。</p></div></section>
+<section class="section"><div class="container"><div class="service-cards">
+<article><span>01</span><h2>ホームページ制作</h2><p>会社・店舗・個人事業主の魅力やサービスを整理し、伝わりやすいサイトを制作します。</p><ul><li>企画・構成</li><li>デザイン</li><li>HTML / CSS / JavaScript</li><li>スマートフォン対応</li><li>公開サポート</li></ul></article>
+<article><span>02</span><h2>LP制作</h2><p>商品・サービスの魅力を一つのページに集約し、問い合わせや購入につながる導線を設計します。</p><ul><li>構成設計</li><li>ビジュアル制作</li><li>問い合わせ導線</li><li>レスポンシブ対応</li></ul></article>
+<article><span>03</span><h2>サイト改善・更新</h2><p>既存サイトの見た目だけでなく、情報整理や導線、スマートフォン表示などを改善します。</p><ul><li>ページ追加</li><li>文章・画像変更</li><li>UI改善</li><li>SEO基本改善</li></ul></article>
+</div><div class="sample-banner"><div><p class="label">SAMPLE</p><h2>実際の制作イメージを見る</h2><p>カフェ・企業・サロンなどの見本をご覧いただけます。</p></div><a class="btn btn-dark" href="{{ url_for('sample') }}">見本を見る</a></div></div></section>
+{% endblock %}

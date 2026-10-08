@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}制作実績｜newcreatestudio{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="label">WORKS</p><h1>制作実績</h1><p>業種別のWebサイト制作見本です。</p></div></section>
+<section class="section"><div class="container"><div class="works-large">
+<a href="{{ url_for('sample') }}" class="work-large"><div class="mock cafe big"><span>CAFE</span></div><h2>カフェ・飲食店サイト</h2><p>メニュー・店舗情報・予約導線を分かりやすく配置。</p></a>
+<a href="{{ url_for('sample') }}" class="work-large"><div class="mock corporate big"><span>COMPANY</span></div><h2>企業サイト</h2><p>会社情報・サービス・実績・お問い合わせを整理。</p></a>
+<a href="{{ url_for('sample') }}" class="work-large"><div class="mock salon big"><span>SALON</span></div><h2>サロン・店舗サイト</h2><p>写真とサービス情報を中心に店舗の魅力を訴求。</p></a>
+</div><p class="note">※上記はポートフォリオ用の制作見本です。実案件の実績として掲載する場合は、実際の案件情報へ差し替えてください。</p></div></section>
+{% endblock %}

@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}案件登録｜newcreatestudio{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="label">PROJECT</p>
+        <h1>案件登録</h1>
+        <p>新しい案件を登録します。</p>
+    </div>
+</section>
+
+
+<section class="admin-dashboard">
+
+    <div class="container">
+
+        <div class="admin-box">
+
+            <h2>案件情報</h2>
+
+            <form method="POST">
+
+                <p>
+                    <label>顧客</label>
+                    <br>
+
+                    <select name="customer_id" required>
+
+                        <option value="">
+                            顧客を選択してください
+                        </option>
+
+                        {% for customer in customers %}
+
+                        <option value="{{ customer['id'] }}">
+
+                            {{ customer['name'] }}
+
+                            {% if customer['company'] %}
+                                ｜{{ customer['company'] }}
+                            {% endif %}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+                </p>
+
+
+                <p>
+                    <label>案件名</label>
+                    <br>
+
+                    <input
+                        type="text"
+                        name="project_name"
+                        placeholder="例：ホームページ制作"
+                        required
+                    >
+                </p>
+
+
+                <p>
+                    <label>案件種類</label>
+                    <br>
+
+                    <select name="project_type">
+
+                        <option value="Web制作">
+                            Web制作
+                        </option>
+
+                        <option value="Webシステム">
+                            Webシステム
+                        </option>
+
+                        <option value="業務システム">
+                            業務システム
+                        </option>
+
+                        <option value="SE・技術支援">
+                            SE・技術支援
+                        </option>
+
+                        <option value="保守・運用">
+                            保守・運用
+                        </option>
+
+                    </select>
+                </p>
+
+
+                <p>
+                    <label>金額</label>
+                    <br>
+
+                    <input
+                        type="number"
+                        name="amount"
+                        value="0"
+                        min="0"
+                    >
+                    円
+                </p>
+
+
+                <p>
+                    <label>ステータス</label>
+                    <br>
+
+                    <select name="status">
+
+                        <option value="問い合わせ">
+                            問い合わせ
+                        </option>
+
+                        <option value="商談">
+                            商談
+                        </option>
+
+                        <option value="見積提出">
+                            見積提出
+                        </option>
+
+                        <option value="契約">
+                            契約
+                        </option>
+
+                        <option value="制作中">
+                            制作中
+                        </option>
+
+                        <option value="確認">
+                            確認
+                        </option>
+
+                        <option value="納品">
+                            納品
+                        </option>
+
+                        <option value="完了">
+                            完了
+                        </option>
+
+                    </select>
+                </p>
+
+
+                <p>
+                    <label>開始日</label>
+                    <br>
+
+                    <input
+                        type="date"
+                        name="start_date"
+                    >
+                </p>
+
+
+                <p>
+                    <label>納期</label>
+                    <br>
+
+                    <input
+                        type="date"
+                        name="due_date"
+                    >
+                </p>
+
+
+                <p>
+                    <label>メモ</label>
+                    <br>
+
+                    <textarea
+                        name="memo"
+                        rows="6"
+                        placeholder="案件についてのメモ"
+                    ></textarea>
+                </p>
+
+
+                <button type="submit">
+                    案件を登録
+                </button>
+
+            </form>
+
+
+            <p>
+                <a href="{{ url_for('admin_projects') }}">
+                    ← 案件一覧へ戻る
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

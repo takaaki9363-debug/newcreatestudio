@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block description %}newcreatestudio｜ホームページ制作・Web制作。企業・店舗・個人事業主のWebサイトを企画から制作までサポートします。{% endblock %}">
+  <meta name="theme-color" content="#0b1220">
+  <title>{% block title %}newcreatestudio｜Web制作・ホームページ制作{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a href="{{ url_for('index') }}" class="brand">newcreate<span>studio</span></a>
+    <nav>
+      <a href="{{ url_for('service') }}">サービス</a>
+      <a href="{{ url_for('works') }}">制作実績</a>
+      <a href="{{ url_for('company') }}">会社情報</a>
+      <a href="{{ url_for('staff') }}">スタッフ</a>
+      <a href="{{ url_for('price') }}">料金</a>
+      <a class="nav-cta" href="{{ url_for('contact') }}">お問い合わせ</a>
+    </nav>
+    <button class="menu-button" aria-label="メニュー" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><div class="brand">newcreate<span>studio</span></div><p>Webサイト制作・ホームページ制作</p></div>
+    <div><strong>MENU</strong><a href="{{ url_for('service') }}">サービス</a><a href="{{ url_for('works') }}">制作実績</a><a href="{{ url_for('company') }}">会社情報</a><a href="{{ url_for('contact') }}">お問い合わせ</a></div>
+    <div><strong>LEGAL</strong><a href="{{ url_for('privacy') }}">プライバシーポリシー</a></div>
+
+  </div>
+  <div class="container copyright">© {{ current_year }} newcreatestudio. All Rights Reserved.</div>
+
+</footer>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

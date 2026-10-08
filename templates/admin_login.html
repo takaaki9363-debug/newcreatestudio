@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}管理画面ログイン｜newcreatestudio{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="label">ADMIN</p>
+        <h1>管理画面ログイン</h1>
+        <p>管理者専用ページです。</p>
+    </div>
+</section>
+
+<section class="admin-login">
+    <div class="container">
+
+        <div class="login-box">
+
+            <h2>管理者ログイン</h2>
+
+            {% if error %}
+                <p class="login-error">{{ error }}</p>
+            {% endif %}
+
+            <form method="POST">
+
+                <div class="form-group">
+                    <label for="username">管理者ID</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn">
+                    ログイン
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

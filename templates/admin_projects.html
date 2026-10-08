@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}案件管理｜newcreatestudio{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="label">PROJECTS</p>
+        <h1>案件管理</h1>
+        <p>現在進行している案件を管理します。</p>
+    </div>
+</section>
+
+<section class="admin-dashboard">
+
+    <div class="container">
+
+        <div class="admin-box">
+
+            <h2>案件一覧</h2>
+
+            <p>
+                <a href="{{ url_for('admin_project_new') }}">
+                    ＋ 案件を登録
+                </a>
+            </p>
+
+            <p>
+                <a href="{{ url_for('export_projects_csv') }}">
+                    📥 CSV出力
+                </a>
+            </p>
+
+            <hr>
+
+            <!-- 検索 -->
+            <form method="GET" action="{{ url_for('admin_projects') }}">
+
+                <input
+                    type="text"
+                    name="keyword"
+                    value="{{ keyword }}"
+                    placeholder="案件名・顧客名・会社名などを検索"
+                >
+
+                <button type="submit">
+                    🔎 検索
+                </button>
+
+                {% if keyword %}
+                    <a href="{{ url_for('admin_projects') }}">
+                        検索を解除
+                    </a>
+                {% endif %}
+
+            </form>
+
+            <hr>
+
+            {% if projects %}
+
+                <p>
+                    {{ projects|length }}件の案件があります。
+                </p>
+
+                {% for project in projects %}
+
+                    <div class="admin-card">
+
+                        <h3>
+                            {{ project["project_name"] }}
+                        </h3>
+
+                        <p>
+                            顧客：
+                            {{ project["customer_name"] }}
+
+                            {% if project["customer_company"] %}
+                                （{{ project["customer_company"] }}）
+                            {% endif %}
+                        </p>
+
+                        <p>
+                            案件種類：
+                            {{ project["project_type"] }}
+                        </p>
+
+                        <p>
+                            金額：
+                            {{ "{:,}".format(project["amount"]) }}円
+                        </p>
+
+                        <p>
+                            ステータス：
+                            <strong>
+                                {{ project["status"] }}
+                            </strong>
+                        </p>
+
+                        <p>
+                            開始日：
+                            {{ project["start_date"] or "未設定" }}
+                        </p>
+
+                        <p>
+                            納期：
+                            {{ project["due_date"] or "未設定" }}
+                        </p>
+
+                        <p>
+                            メモ：
+                            {{ project["memo"] or "なし" }}
+                        </p>
+
+                        <!-- 編集・削除 -->
+                        <div>
+
+                            <a href="{{ url_for('edit_project', project_id=project['id']) }}">
+                                ✏️ 編集
+                            </a>
+
+                            <form
+                                method="POST"
+                                action="{{ url_for('delete_project', project_id=project['id']) }}"
+                                style="display:inline;"
+                                onsubmit="return confirm('この案件を削除しますか？');"
+                            >
+
+                                <button type="submit">
+                                    🗑️ 削除
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                {% endfor %}
+
+            {% else %}
+
+                {% if keyword %}
+
+                    <p>
+                        「{{ keyword }}」に一致する案件はありません。
+                    </p>
+
+                {% else %}
+
+                    <p>
+                        案件はまだ登録されていません。
+                    </p>
+
+                {% endif %}
+
+            {% endif %}
+
+            <p>
+                <a href="{{ url_for('admin') }}">
+                    ← 管理画面へ戻る
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

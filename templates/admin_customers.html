@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}顧客管理｜newcreatestudio{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="label">CUSTOMERS</p>
+        <h1>顧客管理</h1>
+        <p>お客様の情報を管理します。</p>
+    </div>
+</section>
+
+
+<section class="admin-dashboard">
+
+    <div class="container">
+
+        <div class="admin-box">
+
+            <h2>顧客一覧</h2>
+
+
+            <!-- 新規登録 -->
+
+            <p>
+                <a href="{{ url_for('admin_customer_new') }}">
+                    ＋ 顧客を登録
+                </a>
+            </p>
+
+
+            <!-- 検索 -->
+
+            <form
+                method="GET"
+                action="{{ url_for('admin_customers') }}"
+            >
+
+                <input
+                    type="text"
+                    name="keyword"
+                    value="{{ keyword }}"
+                    placeholder="名前・会社名・メール・電話番号で検索"
+                >
+
+                <button type="submit">
+                    検索
+                </button>
+
+            </form>
+
+
+            <br>
+
+
+            <!-- 顧客一覧 -->
+
+            {% if customers %}
+
+                {% for customer in customers %}
+
+                    <div class="admin-card">
+
+                        <h3>
+                            {{ customer["name"] }}
+                        </h3>
+
+                        <p>
+                            会社名：
+                            {{ customer["company"] or "未登録" }}
+                        </p>
+
+                        <p>
+                            メール：
+                            {{ customer["email"] or "未登録" }}
+                        </p>
+
+                        <p>
+                            電話：
+                            {{ customer["phone"] or "未登録" }}
+                        </p>
+
+                        <p>
+                            区分：
+                            {{ customer["category"] }}
+                        </p>
+
+                        <p>
+                            ステータス：
+                            {{ customer["status"] }}
+                        </p>
+
+                        <p>
+                            メモ：
+                            {{ customer["memo"] or "なし" }}
+                        </p>
+
+
+                        <!-- 編集 -->
+
+                        <a
+                            href="{{ url_for(
+                                'admin_customer_edit',
+                                customer_id=customer['id']
+                            ) }}"
+                        >
+                            編集
+                        </a>
+
+
+                        <!-- 削除 -->
+
+                        <a
+                            href="{{ url_for(
+                                'admin_customer_delete',
+                                customer_id=customer['id']
+                            ) }}"
+                            onclick="return confirm(
+                                'この顧客を削除しますか？'
+                            );"
+                        >
+                            削除
+                        </a>
+
+                    </div>
+
+                    <hr>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>
+                    顧客情報がありません。
+                </p>
+
+            {% endif %}
+
+
+            <p>
+                <a href="{{ url_for('admin') }}">
+                    ← 管理画面へ戻る
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

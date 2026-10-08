@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}お問い合わせ｜newcreatestudio{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="label">CONTACT</p><h1>お問い合わせ</h1><p>制作のご相談・お見積もりはこちらから。</p></div></section>
+<section class="section"><div class="container contact-grid"><div><p class="label">LET'S TALK</p><h2>まずはお気軽に<br>ご相談ください。</h2><p>「何ページ必要？」「予算はどれくらい？」など、まだ内容が決まっていない段階でも大丈夫です。</p><div class="contact-note">通常、内容を確認してから2〜3営業日以内を目安にご連絡します。</div></div>
+<form method="post" class="contact-form"><label>お名前 <span>*</span><input name="name" required></label><label>メールアドレス <span>*</span><input type="email" name="email" required></label><label>お問い合わせ内容 <span>*</span><textarea name="message" rows="8" required></textarea></label><button class="btn btn-dark" type="submit">送信する</button>{% with messages=get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<p class="flash {{ category }}">{{ message }}</p>{% endfor %}{% endwith %}</form></div></section>
+<h2>お問い合わせ</h2>
+
+<p>Web制作のご相談・お見積もりはこちらから。</p>
+
+<p>電話：090-9618-4683</p>
+<p>メール：takaaki9363@gmail.com</p>
+{% endblock %}

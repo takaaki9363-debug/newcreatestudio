@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% if customer %}
+    {% set page_title = "顧客情報編集" %}
+{% else %}
+    {% set page_title = "顧客登録" %}
+{% endif %}
+
+{% block title %}
+{{ page_title }}｜newcreatestudio
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <p class="label">CUSTOMER</p>
+
+        <h1>
+            {{ page_title }}
+        </h1>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="admin-card">
+
+            <form method="POST">
+
+                <div class="form-group">
+
+                    <label>
+                        名前 *
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        value="{{ customer['name'] if customer else '' }}"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        会社名
+                    </label>
+
+                    <input
+                        type="text"
+                        name="company"
+                        value="{{ customer['company'] if customer else '' }}"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        メールアドレス
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ customer['email'] if customer else '' }}"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        電話番号
+                    </label>
+
+                    <input
+                        type="tel"
+                        name="phone"
+                        value="{{ customer['phone'] if customer else '' }}"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        顧客区分
+                    </label>
+
+                    <select name="category">
+
+                        {% for item in [
+                            "問い合わせ",
+                            "検討者",
+                            "見積提出",
+                            "契約者",
+                            "制作中",
+                            "納品済み",
+                            "終了"
+                        ] %}
+
+                            <option
+                                value="{{ item }}"
+                                {% if customer and customer["category"] == item %}
+                                    selected
+                                {% endif %}
+                            >
+                                {{ item }}
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        ステータス
+                    </label>
+
+                    <select name="status">
+
+                        {% for item in [
+                            "未対応",
+                            "対応中",
+                            "商談中",
+                            "契約済み",
+                            "制作中",
+                            "完了",
+                            "終了"
+                        ] %}
+
+                            <option
+                                value="{{ item }}"
+                                {% if customer and customer["status"] == item %}
+                                    selected
+                                {% endif %}
+                            >
+                                {{ item }}
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        メモ
+                    </label>
+
+                    <textarea
+                        name="memo"
+                        rows="7"
+                    >{{ customer["memo"] if customer else "" }}</textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    {% if customer %}
+                        更新する
+                    {% else %}
+                        登録する
+                    {% endif %}
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('admin_customers') }}"
+            class="btn"
+        >
+            顧客一覧へ戻る
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-shape"></div>
+  <div class="container hero-inner">
+    <p class="kicker">WEB DESIGN & DEVELOPMENT</p>
+    <h1>伝えたい価値を、<br><em>選ばれるWebサイト</em>へ。</h1>
+    <p class="hero-copy">newcreatestudioは、企業・店舗・個人事業主のためのWeb制作スタジオです。企画、デザイン、制作、公開後の改善まで、目的に合わせて一つひとつ丁寧に設計します。</p>
+    <div class="actions"><a class="btn btn-light" href="{{ url_for('contact') }}">制作を相談する</a><a class="btn btn-ghost" href="{{ url_for('works') }}">制作実績を見る</a></div>
+    <div class="hero-proof"><span>Responsive</span><span>SEO Basic</span><span>Original Design</span></div>
+  </div>
+</section>
+
+<section class="section">
+ <div class="container">
+  <div class="section-head"><p class="label">ABOUT</p><h2>Webサイトを「作る」だけでなく、<br>目的まで一緒に考えます。</h2><p>見た目だけではなく、誰に・何を伝え・どんな行動につなげたいのかを整理して制作します。</p></div>
+  <div class="feature-grid">
+   <article><b>01</b><h3>目的から設計</h3><p>集客、問い合わせ、採用、店舗案内など、サイトの目的を起点に構成を考えます。</p></article>
+   <article><b>02</b><h3>スマートフォン対応</h3><p>PCだけでなく、スマートフォンでも読みやすく操作しやすいレスポンシブ設計。</p></article>
+   <article><b>03</b><h3>公開後もサポート</h3><p>文章・画像の更新や改善など、公開後の運用も必要に応じてサポートします。</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section dark">
+ <div class="container">
+  <div class="section-head light"><p class="label">SERVICE</p><h2>できること</h2><p>必要なものを必要なだけ。規模に合わせて柔軟に対応します。</p></div>
+  <div class="service-list">
+   <a href="{{ url_for('service') }}"><span>01</span><div><h3>ホームページ制作</h3><p>企業・店舗・個人事業主向けのWebサイト</p></div><b>→</b></a>
+   <a href="{{ url_for('service') }}"><span>02</span><div><h3>LP・キャンペーンページ</h3><p>サービスや商品の魅力を1ページに集約</p></div><b>→</b></a>
+   <a href="{{ url_for('service') }}"><span>03</span><div><h3>Webサイト改善・更新</h3><p>既存サイトの改善、コンテンツ更新など</p></div><b>→</b></a>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container">
+  <div class="section-head row-head"><div><p class="label">WORKS</p><h2>制作実績・見本</h2></div><a class="arrow-link" href="{{ url_for('works') }}">一覧を見る →</a></div>
+  <div class="works-grid">
+   <a class="work" href="{{ url_for('sample') }}"><div class="mock cafe"><span>CAFE</span></div><div><small>飲食店</small><h3>カフェサイト</h3></div></a>
+   <a class="work" href="{{ url_for('sample') }}"><div class="mock corporate"><span>COMPANY</span></div><div><small>企業</small><h3>コーポレートサイト</h3></div></a>
+   <a class="work" href="{{ url_for('sample') }}"><div class="mock salon"><span>SALON</span></div><div><small>店舗</small><h3>サロンサイト</h3></div></a>
+  </div>
+ </div>
+</section>
+
+<section class="section soft">
+ <div class="container cta">
+  <p class="label">CONTACT</p><h2>まずは、どんなサイトを作りたいか<br>聞かせてください。</h2><p>まだ内容が決まっていない段階でも大丈夫です。</p><a class="btn btn-dark" href="{{ url_for('contact') }}">お問い合わせはこちら</a>
+ </div>
+</section>
+{% endblock %}

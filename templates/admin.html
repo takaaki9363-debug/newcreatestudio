@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}管理画面｜newcreatestudio{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="label">ADMIN</p>
+        <h1>管理画面</h1>
+        <p>newcreatestudio 管理者ページ</p>
+    </div>
+</section>
+
+
+<section class="admin-dashboard">
+
+    <div class="container">
+
+        <div class="admin-box">
+
+            <h2>管理メニュー</h2>
+
+
+            <!-- お問い合わせ -->
+            <a
+                href="{{ url_for('admin_contacts') }}"
+                class="admin-card"
+            >
+                <h3>お問い合わせ管理</h3>
+                <p>
+                    お客様からのお問い合わせを確認
+                </p>
+            </a>
+
+
+            <!-- 予約可能日時 -->
+            <a
+                href="{{ url_for('admin_reservation_slots') }}"
+                class="admin-card"
+            >
+                <h3>予約可能日時管理</h3>
+                <p>
+                    お客様が予約できる日時を登録・削除
+                </p>
+            </a>
+
+
+            <!-- 打ち合わせ予約 -->
+            <a
+                href="{{ url_for('admin_reservations') }}"
+                class="admin-card"
+            >
+                <h3>打ち合わせ予約一覧</h3>
+                <p>
+                    お客様から予約された打ち合わせを確認
+                </p>
+            </a>
+
+
+            <!-- 顧客管理 -->
+        
+            <a
+                href="{{ url_for('admin_customers') }}"
+                class="admin-card"
+            >
+                <h3>顧客管理</h3>
+                <p>
+                    顧客の登録・検索・編集・削除
+                </p>
+            </a>
+
+            <!-- 案件管理 -->
+
+<a
+    href="{{ url_for('admin_projects') }}"
+    class="admin-card"
+>
+    <h3>案件管理</h3>
+    <p>
+        案件・金額・進捗・納期を管理
+    </p>
+</a>
+
+            <!-- サイト確認 -->
+            <a
+                href="/"
+                class="admin-card"
+            >
+                <h3>サイトを見る</h3>
+                <p>
+                    newcreatestudioのトップページへ
+                </p>
+            </a>
+
+
+            <!-- ログアウト -->
+            <div class="logout-area">
+
+                <a
+                    href="{{ url_for('admin_logout') }}"
+                    class="logout-button"
+                >
+                    ログアウト
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

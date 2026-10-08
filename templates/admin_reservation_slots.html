@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+
+{% block title %}
+予約可能日時管理｜newcreatestudio
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <p class="label">ADMIN</p>
+
+        <h1>予約可能日時管理</h1>
+
+        <p>
+            お客様が予約できる日時を登録できます。
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+        <!-- ===================== -->
+        <!-- メッセージ -->
+        <!-- ===================== -->
+
+        {% with messages = get_flashed_messages(
+            with_categories=true
+        ) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                    <div class="flash {{ category }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <!-- ===================== -->
+        <!-- 新しい日時を登録 -->
+        <!-- ===================== -->
+
+        <div class="admin-card">
+
+            <p class="label">
+                ADD
+            </p>
+
+            <h2>
+                予約可能日時を追加
+            </h2>
+
+            <form
+                method="POST"
+                class="admin-form"
+            >
+
+                <div class="form-group">
+
+                    <label for="reservation_date">
+                        日付
+                    </label>
+
+                    <input
+                        type="date"
+                        id="reservation_date"
+                        name="reservation_date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="reservation_time">
+                        時間
+                    </label>
+
+                    <input
+                        type="time"
+                        id="reservation_time"
+                        name="reservation_time"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    予約可能日時を登録
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- ===================== -->
+        <!-- 登録済み日時 -->
+        <!-- ===================== -->
+
+        <div class="admin-card">
+
+            <p class="label">
+                SCHEDULE
+            </p>
+
+            <h2>
+                登録済み予約可能日時
+            </h2>
+
+
+            {% if slots %}
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    日付
+                                </th>
+
+                                <th>
+                                    時間
+                                </th>
+
+                                <th>
+                                    予約状況
+                                </th>
+
+                                <th>
+                                    操作
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for slot in slots %}
+
+                                <tr>
+
+                                    <td>
+                                        {{ slot["reservation_date"] }}
+                                    </td>
+
+                                    <td>
+                                        {{ slot["reservation_time"] }}
+                                    </td>
+
+
+                                    <td>
+
+                                        {% if slot["reservation_count"] > 0 %}
+
+                                            <strong>
+                                                予約済み
+                                            </strong>
+
+                                        {% else %}
+
+                                            空き
+
+                                        {% endif %}
+
+                                    </td>
+
+
+                                    <td>
+
+                                        {% if slot["reservation_count"] == 0 %}
+
+                                            <a
+                                                href="{{ url_for(
+                                                    'delete_reservation_slot',
+                                                    slot_id=slot['id']
+                                                ) }}"
+                                                onclick="return confirm(
+                                                    'この日時を削除しますか？'
+                                                );"
+                                            >
+                                                削除
+                                            </a>
+
+                                        {% else %}
+
+                                            予約済み
+
+                                        {% endif %}
+
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            {% else %}
+
+                <p>
+                    まだ予約可能日時が登録されていません。
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ===================== -->
+        <!-- 戻る -->
+        <!-- ===================== -->
+
+        <div>
+
+            <a
+                href="{{ url_for('admin') }}"
+                class="btn"
+            >
+                管理画面へ戻る
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

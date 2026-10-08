@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}顧客編集｜newcreatestudio{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="label">CUSTOMER EDIT</p>
+        <h1>顧客編集</h1>
+        <p>顧客情報を編集します。</p>
+    </div>
+</section>
+
+
+<section class="admin-dashboard">
+
+    <div class="container">
+
+        <div class="admin-box">
+
+            <h2>顧客情報を編集</h2>
+
+            <form method="POST">
+
+                <p>
+                    <label>名前</label>
+                    <br>
+                    <input
+                        type="text"
+                        name="name"
+                        value="{{ customer['name'] }}"
+                        required
+                    >
+                </p>
+
+
+                <p>
+                    <label>会社名</label>
+                    <br>
+                    <input
+                        type="text"
+                        name="company"
+                        value="{{ customer['company'] or '' }}"
+                    >
+                </p>
+
+
+                <p>
+                    <label>メールアドレス</label>
+                    <br>
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ customer['email'] or '' }}"
+                    >
+                </p>
+
+
+                <p>
+                    <label>電話番号</label>
+                    <br>
+                    <input
+                        type="text"
+                        name="phone"
+                        value="{{ customer['phone'] or '' }}"
+                    >
+                </p>
+
+
+                <p>
+                    <label>顧客区分</label>
+                    <br>
+
+                    <select name="category">
+
+                        <option value="検討者"
+                            {% if customer['category'] == '検討者' %}selected{% endif %}>
+                            検討者
+                        </option>
+
+                        <option value="契約者"
+                            {% if customer['category'] == '契約者' %}selected{% endif %}>
+                            契約者
+                        </option>
+
+                        <option value="過去顧客"
+                            {% if customer['category'] == '過去顧客' %}selected{% endif %}>
+                            過去顧客
+                        </option>
+
+                    </select>
+
+                </p>
+
+
+                <p>
+                    <label>ステータス</label>
+                    <br>
+
+                    <select name="status">
+
+                        <option value="未対応"
+                            {% if customer['status'] == '未対応' %}selected{% endif %}>
+                            未対応
+                        </option>
+
+                        <option value="商談中"
+                            {% if customer['status'] == '商談中' %}selected{% endif %}>
+                            商談中
+                        </option>
+
+                        <option value="契約"
+                            {% if customer['status'] == '契約' %}selected{% endif %}>
+                            契約
+                        </option>
+
+                        <option value="完了"
+                            {% if customer['status'] == '完了' %}selected{% endif %}>
+                            完了
+                        </option>
+
+                    </select>
+
+                </p>
+
+
+                <p>
+                    <label>メモ</label>
+                    <br>
+
+                    <textarea
+                        name="memo"
+                        rows="6"
+                    >{{ customer['memo'] or '' }}</textarea>
+
+                </p>
+
+
+                <button type="submit">
+                    更新する
+                </button>
+
+            </form>
+
+
+            <p>
+                <a href="{{ url_for('admin_customers') }}">
+                    ← 顧客一覧へ戻る
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}案件編集｜newcreatestudio{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>案件編集</h1>
+
+    <form method="POST">
+
+        <div>
+            <label>案件名</label>
+            <input
+                type="text"
+                name="project_name"
+                value="{{ project['project_name'] }}"
+                required
+            >
+        </div>
+
+        <div>
+            <label>顧客名</label>
+            <input
+                type="text"
+                name="customer_name"
+                value="{{ project['customer_name'] }}"
+                required
+            >
+        </div>
+
+        <div>
+            <label>金額</label>
+            <input
+                type="number"
+                name="amount"
+                value="{{ project['amount'] }}"
+            >
+        </div>
+
+        <div>
+            <label>ステータス</label>
+            <select name="status">
+                <option value="相談中"
+                    {% if project['status'] == '相談中' %}selected{% endif %}>
+                    相談中
+                </option>
+
+                <option value="見積提出"
+                    {% if project['status'] == '見積提出' %}selected{% endif %}>
+                    見積提出
+                </option>
+
+                <option value="制作中"
+                    {% if project['status'] == '制作中' %}selected{% endif %}>
+                    制作中
+                </option>
+
+                <option value="納品済み"
+                    {% if project['status'] == '納品済み' %}selected{% endif %}>
+                    納品済み
+                </option>
+
+                <option value="終了"
+                    {% if project['status'] == '終了' %}selected{% endif %}>
+                    終了
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label>期限</label>
+            <input
+                type="date"
+                name="deadline"
+                value="{{ project['deadline'] }}"
+            >
+        </div>
+
+        <br>
+
+        <button type="submit">
+            保存する
+        </button>
+
+        <a href="{{ url_for('admin_projects') }}">
+            キャンセル
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+
+{% block title %}
+打ち合わせ予約管理｜newcreatestudio
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <p class="label">ADMIN / RESERVATIONS</p>
+
+        <h1>打ち合わせ予約管理</h1>
+
+        <p>
+            お客様からの打ち合わせ予約を確認できます。
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+        {% with messages = get_flashed_messages(
+            with_categories=true
+        ) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                    <div class="flash {{ category }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <div class="admin-card">
+
+            <p class="label">
+                RESERVATIONS
+            </p>
+
+            <h2>
+                予約一覧
+            </h2>
+
+
+            {% if reservations %}
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>日時</th>
+
+                                <th>名前</th>
+
+                                <th>メール</th>
+
+                                <th>電話</th>
+
+                                <th>方法</th>
+
+                                <th>相談内容</th>
+
+                                <th>状況</th>
+
+                                <th>操作</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            {% for reservation in reservations %}
+
+                                <tr>
+
+                                    <td>
+
+                                        {{ reservation["reservation_date"] }}
+
+                                        <br>
+
+                                        {{ reservation["reservation_time"] }}
+
+                                    </td>
+
+
+                                    <td>
+                                        {{ reservation["name"] }}
+                                    </td>
+
+
+                                    <td>
+                                        {{ reservation["email"] }}
+                                    </td>
+
+
+                                    <td>
+
+                                        {% if reservation["phone"] %}
+
+                                            {{ reservation["phone"] }}
+
+                                        {% else %}
+
+                                            -
+
+                                        {% endif %}
+
+                                    </td>
+
+
+                                    <td>
+
+                                        {{ reservation["meeting_type"] }}
+
+                                    </td>
+
+
+                                    <td>
+
+                                        {% if reservation["message"] %}
+
+                                            {{ reservation["message"] }}
+
+                                        {% else %}
+
+                                            -
+
+                                        {% endif %}
+
+                                    </td>
+
+
+                                    <td>
+
+                                        {{ reservation["status"] }}
+
+                                    </td>
+
+
+                                    <td>
+
+    <a
+        href="{{ url_for(
+            'reservation_to_customer',
+            reservation_id=reservation['id']
+        ) }}"
+        onclick="return confirm(
+            'この予約者を顧客として登録しますか？'
+        );"
+    >
+        顧客登録
+    </a>
+
+    <br><br>
+
+    <a
+        href="{{ url_for(
+            'delete_reservation',
+            reservation_id=reservation['id']
+        ) }}"
+        onclick="return confirm(
+            'この予約を削除しますか？'
+        );"
+    >
+        削除
+    </a>
+
+</td>
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            {% else %}
+
+                <p>
+                    現在、打ち合わせ予約はありません。
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="admin-actions">
+
+            <a
+                href="{{ url_for('admin_reservation_slots') }}"
+                class="btn"
+            >
+                予約可能日時を管理
+            </a>
+
+
+            <a
+                href="{{ url_for('admin') }}"
+                class="btn"
+            >
+                管理画面へ戻る
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

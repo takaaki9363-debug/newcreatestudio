@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}お問い合わせ管理｜newcreatestudio{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="label">CONTACTS</p>
+        <h1>お問い合わせ管理</h1>
+        <p>お客様からのお問い合わせを確認できます。</p>
+    </div>
+</section>
+
+<section class="admin-dashboard">
+    <div class="container">
+
+        {% if contacts %}
+
+        <div class="contact-list">
+
+            {% for contact in contacts %}
+
+            <div class="admin-card">
+
+                <h3>{{ contact["name"] }}</h3>
+
+                <p>
+                    <strong>メール：</strong>
+                    {{ contact["email"] }}
+                </p>
+
+                <p>
+                    <strong>受信日時：</strong>
+                    {{ contact["created_at"] }}
+                </p>
+
+                <div class="contact-message">
+                    <strong>お問い合わせ内容</strong>
+                    <p>{{ contact["message"] }}</p>
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <div class="admin-box">
+            <h2>お問い合わせはありません</h2>
+            <p>現在、お客様からのお問い合わせはありません。</p>
+        </div>
+
+        {% endif %}
+
+        <div class="logout-area">
+            <a href="/admin" class="logout-button">
+                管理画面に戻る
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

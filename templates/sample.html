@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}制作見本｜newcreatestudio{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="label">SAMPLE</p><h1>制作見本</h1><p>newcreatestudioで制作できるWebサイトのイメージです。</p></div></section>
+<section class="section"><div class="container">
+<div class="sample-showcase"><div class="browser"><div class="browserbar"><i></i><i></i><i></i></div><div class="sample-screen cafe"><div>CAFE<br><small>GOOD FOOD, GOOD TIME.</small></div></div></div><div class="sample-copy"><p class="label">01 / RESTAURANT</p><h2>カフェ・飲食店サイト</h2><p>店舗の雰囲気を伝えるビジュアルと、メニュー・営業時間・アクセス・予約などの情報を整理した構成。</p><a class="btn btn-dark" href="{{ url_for('contact') }}">このようなサイトを相談する</a></div></div>
+<div class="sample-showcase reverse"><div class="browser"><div class="browserbar"><i></i><i></i><i></i></div><div class="sample-screen corporate"><div>NEW<br>BUSINESS</div></div></div><div class="sample-copy"><p class="label">02 / COMPANY</p><h2>企業サイト</h2><p>企業の信頼性を意識し、事業内容・強み・実績・会社情報・問い合わせまでスムーズに案内。</p></div></div>
+</div></section>
+{% endblock %}
