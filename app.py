@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, Response, session
+from flask import Flask, render_template, request, redirect, url_for, flash, Response, session, send_from_directory
 from datetime import datetime
 import csv
 import io
@@ -1548,6 +1548,11 @@ def booking():
         "booking.html",
         slots=slots
     )
-
+@app.route("/google999902d6e9ca982a.html")
+def google_site_verification():
+    return send_from_directory(
+        app.root_path,
+        "google999902d6e9ca982a.html"
+    )
 if __name__ == "__main__":
     app.run(debug=True)
