@@ -1554,5 +1554,28 @@ def google_site_verification():
         app.root_path,
         "google999902d6e9ca982a.html"
     )
+    @app.route("/sitemap.xml")
+def sitemap():
+    base_url = "https://newcreatestudio.onrender.com"
+    pages = [
+        "",
+        "/company",
+        "/service",
+        "/works",
+        "/sample",
+        "/price",
+        "/staff",
+        "/contact",
+        "/privacy",
+    ]
+
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+
+    for page in pages:
+        xml += f"  <url><loc>{base_url}{page}</loc></url>\n"
+
+    xml += "</urlset>"
+    return Response(xml, mimetype="application/xml")
 if __name__ == "__main__":
     app.run(debug=True)
