@@ -1,52 +1,197 @@
+
 {% extends "base.html" %}
 {% block content %}
+
 <section class="hero">
   <div class="hero-shape"></div>
   <div class="container hero-inner">
-    <p class="kicker">WEB DESIGN & DEVELOPMENT</p>
-    <h1>伝えたい価値を、<br><em>選ばれるWebサイト</em>へ。</h1>
-    <p class="hero-copy">newcreatestudioは、企業・店舗・個人事業主のためのWeb制作スタジオです。企画、デザイン、制作、公開後の改善まで、目的に合わせて一つひとつ丁寧に設計します。</p>
-    <div class="actions"><a class="btn btn-light" href="{{ url_for('contact') }}">制作を相談する</a><a class="btn btn-ghost" href="{{ url_for('works') }}">制作実績を見る</a></div>
-    <div class="hero-proof"><span>Responsive</span><span>SEO Basic</span><span>Original Design</span></div>
+    <p class="kicker">ISHIKARI, HOKKAIDO / WEB DESIGN</p>
+
+    <h1>石狩から、<br><em>あなたのビジネスに新しい可能性を。</em></h1>
+
+    <p class="hero-copy">
+      NewCreateStudioは、北海道石狩市を拠点とする個人Web制作スタジオです。
+      地域のお店・個人事業主・中小企業のホームページ制作をお手伝いします。
+      制作者本人が直接お話を伺い、ご予算や目的に合わせて丁寧に制作します。
+    </p>
+
+    <div class="actions">
+      <a class="btn btn-light" href="{{ url_for('contact') }}">無料相談・お見積もり</a>
+      <a class="btn btn-ghost" href="{{ url_for('works') }}">制作サンプルを見る</a>
+    </div>
+
+    <div class="hero-proof">
+      <span>石狩を拠点に活動</span>
+      <span>制作者本人が直接対応</span>
+      <span>スマートフォン対応</span>
+    </div>
   </div>
 </section>
 
 <section class="section">
- <div class="container">
-  <div class="section-head"><p class="label">ABOUT</p><h2>Webサイトを「作る」だけでなく、<br>目的まで一緒に考えます。</h2><p>見た目だけではなく、誰に・何を伝え・どんな行動につなげたいのかを整理して制作します。</p></div>
-  <div class="feature-grid">
-   <article><b>01</b><h3>目的から設計</h3><p>集客、問い合わせ、採用、店舗案内など、サイトの目的を起点に構成を考えます。</p></article>
-   <article><b>02</b><h3>スマートフォン対応</h3><p>PCだけでなく、スマートフォンでも読みやすく操作しやすいレスポンシブ設計。</p></article>
-   <article><b>03</b><h3>公開後もサポート</h3><p>文章・画像の更新や改善など、公開後の運用も必要に応じてサポートします。</p></article>
-  </div>
- </div>
-</section>
+  <div class="container">
+    <div class="section-head">
+      <p class="label">ABOUT US</p>
+      <h2>石狩で、気軽に相談できる<br>ホームページ制作パートナー。</h2>
+      <p>
+        「ホームページを作りたいけれど、何から始めればいいか分からない」
+        そんな方にも、分かりやすく丁寧にご案内します。
+        大切にしているのは、作って終わりではなく、
+        お客様の事業に合ったWebサイトを一緒に考えることです。
+      </p>
+    </div>
 
-<section class="section dark">
- <div class="container">
-  <div class="section-head light"><p class="label">SERVICE</p><h2>できること</h2><p>必要なものを必要なだけ。規模に合わせて柔軟に対応します。</p></div>
-  <div class="service-list">
-   <a href="{{ url_for('service') }}"><span>01</span><div><h3>ホームページ制作</h3><p>企業・店舗・個人事業主向けのWebサイト</p></div><b>→</b></a>
-   <a href="{{ url_for('service') }}"><span>02</span><div><h3>LP・キャンペーンページ</h3><p>サービスや商品の魅力を1ページに集約</p></div><b>→</b></a>
-   <a href="{{ url_for('service') }}"><span>03</span><div><h3>Webサイト改善・更新</h3><p>既存サイトの改善、コンテンツ更新など</p></div><b>→</b></a>
-  </div>
- </div>
-</section>
+    <div class="feature-grid">
+      <article>
+        <b>01</b>
+        <h3>制作者本人が直接対応</h3>
+        <p>
+          ご相談から制作まで直接やり取り。
+          ご希望や疑問を伝えやすく、一人ひとりのご要望に合わせて進めます。
+        </p>
+      </article>
 
-<section class="section">
- <div class="container">
-  <div class="section-head row-head"><div><p class="label">WORKS</p><h2>制作実績・見本</h2></div><a class="arrow-link" href="{{ url_for('works') }}">一覧を見る →</a></div>
-  <div class="works-grid">
-   <a class="work" href="{{ url_for('sample') }}"><div class="mock cafe"><span>CAFE</span></div><div><small>飲食店</small><h3>カフェサイト</h3></div></a>
-   <a class="work" href="{{ url_for('sample') }}"><div class="mock corporate"><span>COMPANY</span></div><div><small>企業</small><h3>コーポレートサイト</h3></div></a>
-   <a class="work" href="{{ url_for('sample') }}"><div class="mock salon"><span>SALON</span></div><div><small>店舗</small><h3>サロンサイト</h3></div></a>
+      <article>
+        <b>02</b>
+        <h3>予算に合わせたご提案</h3>
+        <p>
+          必要なページや機能を整理し、ご予算に合わせて制作内容をご提案。
+          無理のない形でホームページづくりを始められます。
+        </p>
+      </article>
+
+      <article>
+        <b>03</b>
+        <h3>公開後のことも考える</h3>
+        <p>
+          スマートフォン対応や基本的なSEO設定を考慮し、
+          公開後の更新・改善についても必要に応じてご相談いただけます。
+        </p>
+      </article>
+    </div>
   </div>
- </div>
 </section>
 
 <section class="section soft">
- <div class="container cta">
-  <p class="label">CONTACT</p><h2>まずは、どんなサイトを作りたいか<br>聞かせてください。</h2><p>まだ内容が決まっていない段階でも大丈夫です。</p><a class="btn btn-dark" href="{{ url_for('contact') }}">お問い合わせはこちら</a>
- </div>
+  <div class="container">
+    <div class="section-head">
+      <p class="label">LOCAL BUSINESS</p>
+      <h2>石狩・札幌周辺の事業者の皆さまへ</h2>
+      <p>
+        地域のお店や会社の魅力を、ホームページを通じて伝えませんか。
+        新規開業に向けたサイトづくりから、既存ホームページの見直しまで、
+        事業の状況に合わせてお手伝いします。
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <article>
+        <h3>石狩市の店舗・サロン</h3>
+        <p>お店の特徴、メニュー、営業時間、アクセスなどを分かりやすく紹介します。</p>
+      </article>
+
+      <article>
+        <h3>個人事業主・フリーランス</h3>
+        <p>サービス内容や料金、プロフィールを整理し、信頼につながるサイトを目指します。</p>
+      </article>
+
+      <article>
+        <h3>地域の中小企業</h3>
+        <p>会社概要、事業内容、採用情報などを整理し、会社の魅力を伝えるサイトを制作します。</p>
+      </article>
+    </div>
+  </div>
 </section>
+
+<section class="section dark">
+  <div class="container">
+    <div class="section-head light">
+      <p class="label">SERVICE</p>
+      <h2>ホームページ制作・Webサイト改善</h2>
+      <p>必要なものを必要なだけ。事業の規模や目的に合わせてご提案します。</p>
+    </div>
+
+    <div class="service-list">
+      <a href="{{ url_for('service') }}">
+        <span>01</span>
+        <div>
+          <h3>ホームページ制作</h3>
+          <p>石狩・札幌周辺の企業、店舗、個人事業主向け</p>
+        </div>
+        <b>→</b>
+      </a>
+
+      <a href="{{ url_for('service') }}">
+        <span>02</span>
+        <div>
+          <h3>LP・キャンペーンページ</h3>
+          <p>サービスや商品の魅力を1ページにまとめて紹介</p>
+        </div>
+        <b>→</b>
+      </a>
+
+      <a href="{{ url_for('service') }}">
+        <span>03</span>
+        <div>
+          <h3>Webサイト改善・更新</h3>
+          <p>既存サイトの見直し、情報更新、使いやすさの改善</p>
+        </div>
+        <b>→</b>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head row-head">
+      <div>
+        <p class="label">WORKS / DEMOS</p>
+        <h2>ホームページ制作サンプル</h2>
+        <p>デザインや構成のイメージをご覧いただけます。</p>
+      </div>
+      <a class="arrow-link" href="{{ url_for('works') }}">サンプル一覧 →</a>
+    </div>
+
+    <div class="works-grid">
+      <a class="work" href="{{ url_for('sample') }}">
+        <div class="mock cafe"><span>CAFE</span></div>
+        <div>
+          <small>制作サンプル・飲食店</small>
+          <h3>カフェサイト</h3>
+        </div>
+      </a>
+
+      <a class="work" href="{{ url_for('sample') }}">
+        <div class="mock corporate"><span>COMPANY</span></div>
+        <div>
+          <small>制作サンプル・企業</small>
+          <h3>コーポレートサイト</h3>
+        </div>
+      </a>
+
+      <a class="work" href="{{ url_for('sample') }}">
+        <div class="mock salon"><span>SALON</span></div>
+        <div>
+          <small>制作サンプル・店舗</small>
+          <h3>サロンサイト</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="container cta">
+    <p class="label">CONTACT</p>
+    <h2>石狩でホームページ制作を<br>お考えの方へ。</h2>
+    <p>
+      「費用はどれくらい？」「何を準備すればいい？」
+      そんな段階からでも、お気軽にご相談ください。
+      ご希望を伺い、制作内容やお見積もりをご案内します。
+    </p>
+    <a class="btn btn-dark" href="{{ url_for('contact') }}">無料相談・お見積もりはこちら</a>
+  </div>
+</section>
+
 {% endblock %}
