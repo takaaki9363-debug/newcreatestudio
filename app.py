@@ -1554,7 +1554,7 @@ def google_site_verification():
         app.root_path,
         "google999902d6e9ca982a.html"
     )
-    @app.route("/sitemap.xml")
+@app.route("/sitemap.xml")
 def sitemap():
     base_url = "https://newcreatestudio.onrender.com"
     pages = [
